@@ -1,0 +1,118 @@
+﻿<Page x:Class="MOT.view.worker.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MOT.view.worker"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductPage">
+
+    <DockPanel Name="dpRoot">
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" x:Name="column1"/>
+            <Grid Grid.Column="1" x:Name="column2"/>
+            <Grid Grid.Column="2" x:Name="column3"/>
+            <Grid Grid.Column="2" x:Name="column4"/>
+        </Grid>
+
+        <Label DockPanel.Dock="Top" Content="产品A" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top" FontSize="28"/>
+
+        <Grid 
+            DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button 
+                Name="btnBack"
+                Margin="10"
+                Grid.Column="0"
+                Content="返回"
+                Height="50"
+                Width="150"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"  
+                FontSize="20"  
+                Foreground="White" 
+                Background="#FF053364" Click="BtnBack_Click"/>
+            <Button 
+                Name="btnNext"
+                Margin="10"
+                Grid.Column="1"
+                 Content="下一步"
+                 Height="50"
+                 Width="150"
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Center"  
+                 FontSize="20"  
+                 Foreground="White" Background="#FF053364" Click="BtnNext_Click"/>
+        </Grid>
+
+        <ListView
+            Name="lvMaterials" >
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="型号" Width="{Binding ElementName=column1,Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                    TextAlignment="Center"
+                                    FontSize="18" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    Text="{Binding modelNum}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="名称"  Width="{Binding ElementName=column2,Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock 
+                                    Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                    FontSize="18" 
+                                    TextAlignment="Center" 
+                                    Text="{Binding name}" 
+                                    HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="库存" Width="{Binding ElementName=column3,Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock 
+                                    Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                    FontSize="18" 
+                                    Text="{Binding rest}" 
+                                    TextAlignment="Center" 
+                                    HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="领用数量" Width="{Binding ElementName=column4,Path=ActualWidth}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel 
+                                    Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                    HorizontalAlignment="Center">
+                                    <Button DockPanel.Dock="Left" Content=" - " Margin="20,0,20,0"/>
+                                    <Button DockPanel.Dock="Right" Content=" + " Margin="20,0,20,0" />
+                                    <TextBlock FontSize="18" Text="{Binding num}" TextAlignment="Center"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Page>
