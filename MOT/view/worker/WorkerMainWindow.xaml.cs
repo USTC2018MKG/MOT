@@ -27,6 +27,10 @@ namespace MOT.view.worker
             this.employeeId = employeeId;
         }
 
-        
+        public WorkerMainWindow()
+        {
+            InitializeComponent();
+        }
+
     }
 }

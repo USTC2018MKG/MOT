@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MOT.domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,36 @@ namespace MOT.view.worker
     /// </summary>
     public partial class ConfirmPage : Page
     {
+        private List<ProductItem> productItems;
+
         public ConfirmPage()
         {
             InitializeComponent();
+        }
+
+
+        public ConfirmPage(List<ProductItem> productItems)
+        {
+            InitializeComponent();
+            this.productItems = productItems;
+        }
+
+
+
+        private void BtnNext_Click(object sender, RoutedEventArgs e)
+        {
+            // 确认下单,员工主管刷卡后，生成订单
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            // 返回选择
+            this.NavigationService.GoBack();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            lvMaterials.ItemsSource = productItems;
         }
     }
 }

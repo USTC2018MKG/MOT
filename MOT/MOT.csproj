@@ -77,6 +77,8 @@
     </ApplicationDefinition>
     <Compile Include="CardDevice.cs" />
     <Compile Include="domain\Account.cs" />
+    <Compile Include="domain\Product.cs" />
+    <Compile Include="domain\ProductItem.cs" />
     <Compile Include="domain\User.cs" />
     <Compile Include="view\worker\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>

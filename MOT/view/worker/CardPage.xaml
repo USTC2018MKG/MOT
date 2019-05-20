@@ -31,7 +31,7 @@
                 Orientation="Horizontal">
                 <Label Content="或手动输入" FontSize="30"/>
                 <TextBox 
-                    Name="tbProduceNum"
+                    Name="tbProductNum"
                     Width="200" 
                     Margin="10,0,10,0" 
                     FontSize="30"/>

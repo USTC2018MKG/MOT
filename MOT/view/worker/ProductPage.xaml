@@ -6,20 +6,18 @@
       xmlns:local="clr-namespace:MOT.view.worker"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductPage">
+      Title="ProductPage" Loaded="Page_Loaded">
 
     <DockPanel Name="dpRoot">
-        <Grid DockPanel.Dock="Top">
+        <Grid DockPanel.Dock="Top" Margin="10,0,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" x:Name="column1"/>
             <Grid Grid.Column="1" x:Name="column2"/>
             <Grid Grid.Column="2" x:Name="column3"/>
-            <Grid Grid.Column="2" x:Name="column4"/>
         </Grid>
 
         <Label DockPanel.Dock="Top" Content="产品A" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top" FontSize="28"/>
@@ -62,18 +60,23 @@
                     <GridViewColumn Header="型号" Width="{Binding ElementName=column1,Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock
+                                <DockPanel
                                     Width="{Binding ElementName=column1,Path=ActualWidth}"
-                                    TextAlignment="Center"
-                                    FontSize="18" 
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center" 
-                                    Text="{Binding modelNum}"/>
+                                    Height="50"
+                                    HorizontalAlignment="Center">
+                                    <TextBlock
+                                        Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                        TextAlignment="Center"
+                                        FontSize="18" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" 
+                                        Text="{Binding mid}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="名称"  Width="{Binding ElementName=column2,Path=ActualWidth}">
+                    <!--<GridViewColumn Header="名称"  Width="{Binding ElementName=column2,Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock 
@@ -84,29 +87,78 @@
                                     HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
 
-                    <GridViewColumn Header="库存" Width="{Binding ElementName=column3,Path=ActualWidth}">
+                    <GridViewColumn Header="库存" Width="{Binding ElementName=column1,Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock 
+                                <DockPanel
                                     Width="{Binding ElementName=column1,Path=ActualWidth}"
-                                    FontSize="18" 
-                                    Text="{Binding rest}" 
-                                    TextAlignment="Center" 
-                                    HorizontalAlignment="Center"/>
+                                    Height="50"
+                                    HorizontalAlignment="Center">
+                                    <TextBlock
+                                        Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                        TextAlignment="Center"
+                                        FontSize="18" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" 
+                                        Text="{Binding rest}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="领用数量" Width="{Binding ElementName=column4,Path=ActualWidth}">
+                    <GridViewColumn Header="领用数量" Width="{Binding ElementName=column2,Path=ActualWidth}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <DockPanel 
+                                <DockPanel
+                                    
                                     Width="{Binding ElementName=column1,Path=ActualWidth}"
+                                    Height="50"
                                     HorizontalAlignment="Center">
-                                    <Button DockPanel.Dock="Left" Content=" - " Margin="20,0,20,0"/>
-                                    <Button DockPanel.Dock="Right" Content=" + " Margin="20,0,20,0" />
-                                    <TextBlock FontSize="18" Text="{Binding num}" TextAlignment="Center"/>
+                                    <Button 
+                                        Name="btnMinus"
+                                        DockPanel.Dock="Left"
+                                        Background="#FF053364"
+                                        Foreground="White"
+                                        FontSize="18" 
+                                        Width="40" 
+                                        Padding="5,5,5,5"
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        BorderThickness="0" 
+                                        Content="-1" Click="BtnMinus_Click"  />
+                                    <Button 
+                                        Name="btnDelete"
+                                        DockPanel.Dock="Right"
+                                        Background="#FF053364"
+                                        Foreground="White"
+                                        Margin="5,0,5,0"
+                                        Padding="5,5,5,5"
+                                        FontSize="18" 
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        BorderThickness="0" 
+                                        Content="删除" Click="BtnDelete_Click"  />
+                                    
+                                    <Button 
+                                        Name="btnAdd"
+                                        Padding="5,5,5,5"
+                                        DockPanel.Dock="Right"
+                                        Background="#FF053364"
+                                        Foreground="White"
+                                        FontSize="18" 
+                                        Width="40" 
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        BorderThickness="0" 
+                                        Content="+1" Click="BtnAdd_Click"  />
+
+                                    <TextBox 
+                                        Margin="10,0,10,0"
+                                        FontSize="18" 
+                                        VerticalAlignment="Center" 
+                                        Text="{Binding Num}" 
+                                        TextAlignment="Center"/>
                                 </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

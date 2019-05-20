@@ -53,6 +53,15 @@ namespace MOT.view.worker
         private void BtnInputDone_Click(object sender, RoutedEventArgs e)
         {
             // 暂时没有二维码扫描，使用手动输入
+            if (String.IsNullOrEmpty(tbProductNum.Text))
+            {
+                MessageBox.Show("请输入产品号");
+            }
+            else
+            {
+                Page p = new ProductPage(tbProductNum.Text);
+                this.NavigationService.Navigate(p);
+            }
         }
     }
 }
