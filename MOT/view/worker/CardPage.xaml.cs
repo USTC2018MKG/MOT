@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace MOT.view.worker
 {
     /// <summary>
-    /// CardPage.xaml 的交互逻辑
+    /// CardPage.xaml 的交互逻辑。
     /// </summary>
     public partial class CardPage : Page
     {

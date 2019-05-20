@@ -80,6 +80,9 @@
     <Compile Include="domain\Product.cs" />
     <Compile Include="domain\ProductItem.cs" />
     <Compile Include="domain\User.cs" />
+    <Compile Include="view\worker\AdminConfirmPage.xaml.cs">
+      <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\worker\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="view\worker\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\worker\PreOrderPage.xaml.cs">
+      <DependentUpon>PreOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\worker\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
@@ -108,6 +114,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\worker\AdminConfirmPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\worker\CardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\worker\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\worker\PreOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

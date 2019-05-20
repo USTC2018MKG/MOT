@@ -25,7 +25,7 @@
         <Label 
             HorizontalAlignment="Center"  
             Margin="0,30,0,0"
-            Content="请刷员工卡！" 
+            Content="请刷员工卡后操作" 
             FontSize="30"/>
     </StackPanel>
 </Window>

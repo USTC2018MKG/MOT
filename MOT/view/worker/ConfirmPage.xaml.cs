@@ -41,6 +41,8 @@ namespace MOT.view.worker
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             // 确认下单,员工主管刷卡后，生成订单
+            Page adminPage = new AdminConfirmPage(productItems);
+            this.NavigationService.Navigate(adminPage);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -51,6 +53,7 @@ namespace MOT.view.worker
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            
             lvMaterials.ItemsSource = productItems;
         }
     }

@@ -32,8 +32,7 @@ namespace MOT
         /// 1. 定时器监听刷卡动作，刷卡成功后，根据角色进入不同界面
         /// </summary>
         System.Windows.Threading.DispatcherTimer dtimer;
-        private CardDevice cardDevice;
-        private bool isDeviceOk;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -44,18 +43,14 @@ namespace MOT
                 dtimer.Tick += dtimer_Tick;
             }
 
-            if (cardDevice == null)
-            {
-                cardDevice = new CardDevice();
-            }
         }
 
         void dtimer_Tick(object sender, EventArgs e)
         {
             // 判断设备是否可用，不可用则继续检测
-            if (isDeviceOk)
+            if (CardDevice.Instance.IsDeviceOk)
             {
-                String cardNo = cardDevice.GetCardNo();
+                String cardNo = CardDevice.Instance.GetCardNo();
                 if (!String.IsNullOrEmpty(cardNo))
                 {
                     User u = login(cardNo);
@@ -72,8 +67,8 @@ namespace MOT
             }
             else
             {
-                isDeviceOk = cardDevice.TestPort();
-                if (!isDeviceOk)
+                CardDevice.Instance.Prepare();
+                if (!CardDevice.Instance.IsDeviceOk)
                 {
                     labelTip.Content = "未检测到刷卡机!";
                 }

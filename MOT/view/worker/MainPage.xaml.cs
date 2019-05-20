@@ -27,7 +27,7 @@ namespace MOT.view.worker
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            // 如何控制宿主Windows的关闭呢
+            // 控制宿主Windows的关闭
             Window workerMain = Window.GetWindow(this);
             workerMain.Close();
         }

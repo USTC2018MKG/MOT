@@ -20,6 +20,7 @@ namespace MOT.domain
 
         // 一个产品需要此种刀具的数量
         private int num;
+
         public int Num
         {
             get { return this.num; }

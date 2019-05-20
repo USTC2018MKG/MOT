@@ -41,6 +41,16 @@ namespace MOT.view.worker
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
+            // 将选择数量为0的，从数据中删除。倒叙保证下标位置。
+            for (int i = productItems.Count - 1; i >= 0; i--)
+            {
+                if (productItems[i].Num == 0)
+                {
+                    productItems.Remove(productItems[i]);
+                }
+            }
+
+            
             Page confirmPage = new ConfirmPage(items);
             this.NavigationService.Navigate(confirmPage);
         }
@@ -58,12 +68,17 @@ namespace MOT.view.worker
             // String productQuery = "select *  FROM product WHERE product.pid = @pid;";
 
             string query = "SELECT product_item.plid, product_item.pid, product_item.mid, product_item.num, product_item.maxsafe_repo,product_item.minwarning_repo,product_item.pred_knife_num,material.rest " +
-                "FROM product_item, material WHERE product_item.pid = @pid AND material.mid = product_item.mid;" ;
+                "FROM product_item, material WHERE product_item.pid = @pid AND material.mid = product_item.mid;";
             using (IDbConnection connection = new MySqlConnection(sqlServer))
             {
-                 items = connection.Query<ProductItem>(query, new { pid = productId }).ToList();
+                items = connection.Query<ProductItem>(query, new { pid = productId }).ToList();
 
                 //   var product = connection.Query<Product>(productQuery, new { pid = productId });
+                foreach (ProductItem item in items)
+                {
+                    // 如果所需刀具个数多于库存，以库存为主
+                    item.Num = item.Num > item.rest ? item.rest : item.Num;
+                }
                 productItems = new ObservableCollection<ProductItem>(items);
                 lvMaterials.ItemsSource = productItems;
             }
@@ -74,9 +89,13 @@ namespace MOT.view.worker
         {
             lvMaterials.SelectedItem = ((Button)sender).DataContext;
             ProductItem item = lvMaterials.SelectedItem as ProductItem;
-            if(item.Num > 0)
+            if (item.Num > 0)
             {
                 item.Num--;
+            }
+            else
+            {
+                MessageBox.Show("刀具数量不能为负");
             }
         }
 
@@ -85,9 +104,13 @@ namespace MOT.view.worker
         {
             lvMaterials.SelectedItem = ((Button)sender).DataContext;
             ProductItem item = lvMaterials.SelectedItem as ProductItem;
-            if(item.Num < item.rest)
+            if (item.Num < item.rest)
             {
                 item.Num++;
+            }
+            else
+            {
+                MessageBox.Show("数量不可超过库存！");
             }
         }
 
@@ -95,7 +118,7 @@ namespace MOT.view.worker
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("确定不需要此种刀具吗？", "提示", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
-            if(result == MessageBoxResult.OK)
+            if (result == MessageBoxResult.OK)
             {
                 lvMaterials.SelectedItem = ((Button)sender).DataContext;
                 ProductItem item = lvMaterials.SelectedItem as ProductItem;
