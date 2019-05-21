@@ -68,7 +68,7 @@ namespace MOT
         {
             if (!isDeviceOk)
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     int result = WSR.ws_openPort(i);
                     if (result >= 0)
@@ -101,6 +101,16 @@ namespace MOT
             {
                 return null;
             }
+        }
+
+        public void Beep()
+        {
+            if (isDeviceOk)
+            {
+                // 蜂鸣
+                rt = WSR.ws_beep(port);
+            }
+           
         }
     }
 }

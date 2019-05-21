@@ -57,6 +57,7 @@ namespace MOT.view.worker
                 String cardNo = CardDevice.Instance.GetCardNo();
                 if (!String.IsNullOrEmpty(cardNo))
                 {
+                   // CardDevice.Instance.Beep();
                     User admin = CheckAdmin(cardNo);
                     if(admin.type == 2 || admin.type == 3)
                     {

@@ -31,8 +31,6 @@ namespace MOT.view.worker
 
         private ObservableCollection<ProductItem> productItems;
 
-        private List<ProductItem> items;
-
         public ProductPage(string productId)
         {
             InitializeComponent();
@@ -42,16 +40,22 @@ namespace MOT.view.worker
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             // 将选择数量为0的，从数据中删除。倒叙保证下标位置。
-            for (int i = productItems.Count - 1; i >= 0; i--)
+            // 如果选择的全是零，那么应该有提示
+            int count = productItems.Count();
+            foreach(ProductItem item in productItems)
             {
-                if (productItems[i].Num == 0)
+                if(item.Num == 0)
                 {
-                    productItems.Remove(productItems[i]);
+                    count--;
                 }
             }
 
-            
-            Page confirmPage = new ConfirmPage(items);
+            if(count == 0)
+            {
+                MessageBox.Show("请至少选择一种刀具，且数量不为零");
+                return;
+            }
+            ConfirmPage confirmPage = new ConfirmPage(productItems.AsList());
             this.NavigationService.Navigate(confirmPage);
         }
 
@@ -71,7 +75,7 @@ namespace MOT.view.worker
                 "FROM product_item, material WHERE product_item.pid = @pid AND material.mid = product_item.mid;";
             using (IDbConnection connection = new MySqlConnection(sqlServer))
             {
-                items = connection.Query<ProductItem>(query, new { pid = productId }).ToList();
+               List<ProductItem> items = connection.Query<ProductItem>(query, new { pid = productId }).ToList();
 
                 //   var product = connection.Query<Product>(productQuery, new { pid = productId });
                 foreach (ProductItem item in items)
@@ -122,7 +126,7 @@ namespace MOT.view.worker
             {
                 lvMaterials.SelectedItem = ((Button)sender).DataContext;
                 ProductItem item = lvMaterials.SelectedItem as ProductItem;
-                items.Remove(item);
+                
                 productItems.Remove(item);
             }
         }

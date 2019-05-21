@@ -21,6 +21,8 @@ namespace MOT.domain
         // 一个产品需要此种刀具的数量
         private int num;
 
+        private Boolean available;
+
         public int Num
         {
             get { return this.num; }
@@ -33,6 +35,11 @@ namespace MOT.domain
                     this.NotifyPropertyChanged("Num");
                 }
             }
+        }
+
+        public Boolean Available
+        {
+            get { return num < rest; }
         }
 
         // 最大安全库存

@@ -76,6 +76,7 @@ namespace MOT.view.worker
                             {
                                 String knifeSql = "update material set rest = @rest where mid = @mid; ";
                                 int newRest = item.rest - item.Num;
+                                // 修改刀具表中可用余量
                                 if (newRest >= 0)
                                 {
                                     connection.Execute(knifeSql, new { rest = newRest, mid = item.mid }, transaction);
@@ -103,7 +104,8 @@ namespace MOT.view.worker
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("MainPage.xaml"));
+            Window workerMain = Window.GetWindow(this);
+            workerMain.Close();
         }
     }
 }

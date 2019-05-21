@@ -53,7 +53,14 @@ namespace MOT.view.worker
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            // 不显示选择数量为0的刀具
+            for (int i = productItems.Count - 1; i >= 0; i--)
+            {
+                if (productItems[i].Num == 0)
+                {
+                    productItems.Remove(productItems[i]);
+                }
+            }
             lvMaterials.ItemsSource = productItems;
         }
     }

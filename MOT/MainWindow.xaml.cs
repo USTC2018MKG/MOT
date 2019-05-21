@@ -53,6 +53,8 @@ namespace MOT
                 String cardNo = CardDevice.Instance.GetCardNo();
                 if (!String.IsNullOrEmpty(cardNo))
                 {
+                    // 刷卡成功后，蜂鸣下
+                    // CardDevice.Instance.Beep();
                     User u = login(cardNo);
                     Account.Instance.Login(u);
                     // TODO 根据卡号类型，跳转相应的员工界面
