@@ -109,6 +109,7 @@ namespace MOT
             string sqlServer = ConfigurationManager.AppSettings["MySQLUrl"];
             using (IDbConnection connection = new MySqlConnection(sqlServer))
             {
+                //TODO 员工id跟卡号匹配
                 string query = "select *  FROM user WHERE employee_id = @employee_id";
                 User u = connection.Query<User>(query, new { employee_id = 1 }).SingleOrDefault();
                 return u;
