@@ -75,7 +75,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CardDevice.cs" />
+    <Compile Include="device\CardDevice.cs" />
+    <Compile Include="device\Vbarapi.cs" />
     <Compile Include="domain\Account.cs" />
     <Compile Include="domain\Product.cs" />
     <Compile Include="domain\ProductItem.cs" />
@@ -83,8 +84,8 @@
     <Compile Include="view\worker\AdminConfirmPage.xaml.cs">
       <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\worker\CardPage.xaml.cs">
-      <DependentUpon>CardPage.xaml</DependentUpon>
+    <Compile Include="view\worker\QRCodePage.xaml.cs">
+      <DependentUpon>QRCodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\worker\ConfirmPage.xaml.cs">
       <DependentUpon>ConfirmPage.xaml</DependentUpon>
@@ -101,7 +102,7 @@
     <Compile Include="view\worker\WorkerMainWindow.xaml.cs">
       <DependentUpon>WorkerMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WSR.cs" />
+    <Compile Include="device\WSR.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\worker\CardPage.xaml">
+    <Page Include="view\worker\QRCodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

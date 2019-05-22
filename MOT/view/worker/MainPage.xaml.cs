@@ -34,7 +34,7 @@ namespace MOT.view.worker
 
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("pack://application:,,,/view/worker/CardPage.xaml"));
+            this.NavigationService.Navigate(new Uri("pack://application:,,,/view/worker/QRCodePage.xaml"));
         }
     }
 }

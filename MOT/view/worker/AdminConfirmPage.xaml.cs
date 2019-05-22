@@ -106,5 +106,14 @@ namespace MOT.view.worker
                 dtimer.Start();
             }
         }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (dtimer != null && dtimer.IsEnabled)
+            {
+                dtimer.Stop();
+                dtimer = null;
+            }
+        }
     }
 }

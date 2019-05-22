@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/// <summary>
+/// 读卡器
+/// </summary>
 namespace WitMark
 {
 

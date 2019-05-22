@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MOT.view.worker"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="AdminConfirmPage" Loaded="Page_Loaded">
+      Title="AdminConfirmPage" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
     <StackPanel>
 
