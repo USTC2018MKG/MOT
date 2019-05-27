@@ -42,7 +42,7 @@ namespace MOT.view
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             Window workerMain = Window.GetWindow(this);
-            workerMain.Close();        
+            workerMain.Close();
         }
 
         // 页面加载完成后，去下单
@@ -60,9 +60,9 @@ namespace MOT.view
                 {
                     String uuid = System.Guid.NewGuid().ToString("N");
                     String now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    String query = "insert into out_order values (@out_id, @out_time, @employee_id, @state, @admin_id);";
+                    String query = "insert into out_order values (@out_id, @out_time, @employee_id, @admin_id, @state);";
                     // User u = connection.Query<User>(query, new { employee_id = 1 }).SingleOrDefault();
-                    int orderRows = connection.Execute(query, new { out_id = uuid, out_time = now, employee_id = employeeId, state = 0, admin_id = adminId }, transaction);
+                    int orderRows = connection.Execute(query, new { out_id = uuid, out_time = now, employee_id = employeeId, admin_id = adminId, state = 0 }, transaction);
 
                     if (orderRows > 0)
                     {

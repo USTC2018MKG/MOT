@@ -1,4 +1,5 @@
-﻿using MOT.domain;
+﻿using AccountHelper;
+using MOT.domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +41,18 @@ namespace MOT.view
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             // 确认下单,员工主管刷卡后，生成订单
-            Page adminPage = new AdminConfirmPage(productItems);
-
-            this.NavigationService.Navigate(adminPage);
+            // 如果用户是主管的话，不再需要管理员刷卡
+            User user = Account.Instance.GetUser();
+            if (user.type == Constant.USER_TYPE_ADMIN)
+            {
+                Page page = new PreOrderPage(productItems, user.employee_id, user.employee_id);
+                this.NavigationService.Navigate(page);
+            }
+            else
+            {
+                Page adminPage = new AdminConfirmPage(productItems);
+                this.NavigationService.Navigate(adminPage);
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

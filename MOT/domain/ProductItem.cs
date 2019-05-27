@@ -9,6 +9,8 @@ namespace MOT.domain
 {
     public class ProductItem : INotifyPropertyChanged
     {
+        private User user = AccountHelper.Account.Instance.GetUser();
+
         // 自己id
         public string plid { get; set; }
 
@@ -25,13 +27,24 @@ namespace MOT.domain
 
         public int Num
         {
-            get { return this.num; }
+            get
+            {
+                return this.num;
+            }
 
             set
             {
                 if (this.num != value)
                 {
-                    this.num = value;
+                    if (user.NumAuth() > 0 && user.type == Constant.USER_TYPE_ADMIN)
+                    {
+                        this.num = value > user.NumAuth()?user.NumAuth():value;
+                    }
+                    else
+                    {
+                        this.num = value;
+                    }
+                    
                     this.NotifyPropertyChanged("Num");
                 }
             }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MOT.view.admin"
         mc:Ignorable="d"
-        Title="AdminMainWindow" Height="450" Width="800">
- 
+        Source="AdminMainPage.xaml"
+        Title="AdminMainWindow" Height="600" Width="800">
+
 </NavigationWindow>

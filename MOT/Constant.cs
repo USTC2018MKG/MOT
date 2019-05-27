@@ -22,5 +22,11 @@ namespace MOT
         public const int ENGINEER_NEXT_ADD = 0;
 
         public const int ENGINEER_NEXT_CHANGE = 1;
+
+
+        // admin 二维码扫描出结果后，下一跳
+        public const int ADMIN_NEXT_WITHOUT_OLD = 0;
+
+        public const int ADMIN_NEXT_CHANGE = 1;
     }
 }

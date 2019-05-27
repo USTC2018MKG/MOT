@@ -85,8 +85,17 @@
     <Compile Include="view\AdminConfirmPage.xaml.cs">
       <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\admin\AdminMainPage.xaml.cs">
+      <DependentUpon>AdminMainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\admin\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\admin\ProductPage.xaml.cs">
+      <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\admin\QRCodePage.xaml.cs">
+      <DependentUpon>QRCodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ConfirmPage.xaml.cs">
       <DependentUpon>ConfirmPage.xaml</DependentUpon>
@@ -109,20 +118,11 @@
     <Compile Include="view\PreOrderPage.xaml.cs">
       <DependentUpon>PreOrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\worker\AdminConfirmPage.xaml.cs">
-      <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\worker\QRCodePage.xaml.cs">
       <DependentUpon>QRCodePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\worker\ConfirmPage.xaml.cs">
-      <DependentUpon>ConfirmPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\worker\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\worker\PreOrderPage.xaml.cs">
-      <DependentUpon>PreOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\worker\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
@@ -147,9 +147,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="view\admin\AdminMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\admin\AdminMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\admin\ProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\admin\QRCodePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\ConfirmPage.xaml">
       <SubType>Designer</SubType>
@@ -179,23 +191,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\worker\AdminConfirmPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\worker\QRCodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\worker\ConfirmPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="view\worker\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\worker\PreOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

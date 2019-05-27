@@ -15,5 +15,19 @@ namespace MOT.domain
         public string phone { get; set; }
         public Nullable<int> state { get; set; }
         public int type { get; set; }
+        private int num_auth { get; set; }
+
+        // 管理员用户的无实物领取权限
+        public int NumAuth()
+        {
+            if(type == Constant.USER_TYPE_ADMIN){
+                return num_auth;
+            }
+            else
+            {
+                return -1;
+            }
+            
+        }
     }
 }
