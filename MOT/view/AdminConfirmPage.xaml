@@ -1,0 +1,33 @@
+﻿<Page x:Class="MOT.view.AdminConfirmPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MOT.view.worker"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="AdminConfirmPage" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <StackPanel>
+
+        <Label 
+            Name="labelTip"
+            HorizontalAlignment="Center"  
+            Margin="0,30,0,0"
+            Content="" 
+            FontSize="30" Foreground="Red"/>
+
+        <Image 
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center" 
+            Margin="0,50,0,0"
+            Width="300" 
+            Height="300" 
+            Source="../Resources/card.jpg"/>
+        <Label 
+            HorizontalAlignment="Center"  
+            Margin="0,30,0,0"
+            Content="请主管刷卡确认" 
+            FontSize="30"/>
+    </StackPanel>
+</Page>

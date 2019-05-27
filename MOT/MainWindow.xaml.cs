@@ -1,6 +1,9 @@
 ﻿using AccountHelper;
 using Dapper;
 using MOT.domain;
+using MOT.view.admin;
+using MOT.view.engineer;
+using MOT.view.manager;
 using MOT.view.worker;
 using MySql.Data.MySqlClient;
 using System;
@@ -57,12 +60,9 @@ namespace MOT
                     // CardDevice.Instance.Beep();
                     User u = login(cardNo);
                     Account.Instance.Login(u);
-                    // TODO 根据卡号类型，跳转相应的员工界面
-                    WorkerMainWindow workerMainWindow = new WorkerMainWindow(cardNo);  //Login为窗口名，把要跳转的新窗口实例化
-                    workerMainWindow.WindowStartupLocation = WindowStartupLocation.Manual;   //使新窗口位置在原来的位置上
-                    workerMainWindow.Left = this.Left;  //使新窗口位置在原来的位置上
-                    workerMainWindow.Top = this.Top;  //使新窗口位置在原来的位置上
-                    workerMainWindow.Show();  //打开新窗口
+                    // 根据卡号类型，跳转相应的员工界面
+                    Window window = JumpWindow(u);                 
+                    window.Show();  //打开新窗口
                     // 关闭定时器
                     dtimer.Stop();
                 }
@@ -84,6 +84,31 @@ namespace MOT
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        // 根据用户类型，跳转对应界面
+        private Window JumpWindow(User user)
+        {
+            Window window;
+            switch (user.type)
+            {
+                case Constant.USER_TYPE_ADMIN:
+                    window = new AdminMainWindow();
+                    break;
+                case Constant.USER_TYPE_ENGINEER:
+                    window = new EngineerMainWindow();
+                    break;
+                case Constant.USER_TYPE_MANAGER:
+                    window = new ManagerMainWindow();
+                    break;
+                default:
+                    window = new WorkerMainWindow();  
+                    break;
+            }
+            window.WindowStartupLocation = WindowStartupLocation.Manual;   //使新窗口位置在原来的位置上
+            window.Left = this.Left;  //使新窗口位置在原来的位置上
+            window.Top = this.Top;  //使新窗口位置在原来的位置上
+            return window;
         }
 
         // 变为活动窗口，load之前以及其他窗口切回

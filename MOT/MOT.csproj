@@ -75,12 +75,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constant.cs" />
     <Compile Include="device\CardDevice.cs" />
     <Compile Include="device\Vbarapi.cs" />
     <Compile Include="domain\Account.cs" />
     <Compile Include="domain\Product.cs" />
     <Compile Include="domain\ProductItem.cs" />
     <Compile Include="domain\User.cs" />
+    <Compile Include="view\AdminConfirmPage.xaml.cs">
+      <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\admin\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ConfirmPage.xaml.cs">
+      <DependentUpon>ConfirmPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\engineer\EngineerMainWindow.xaml.cs">
+      <DependentUpon>EngineerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\engineer\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\engineer\ProductAddPage.xaml.cs">
+      <DependentUpon>ProductAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\engineer\QRCodePage.xaml.cs">
+      <DependentUpon>QRCodePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\manager\ManagerMainWindow.xaml.cs">
+      <DependentUpon>ManagerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\PreOrderPage.xaml.cs">
+      <DependentUpon>PreOrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\worker\AdminConfirmPage.xaml.cs">
       <DependentUpon>AdminConfirmPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +143,42 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\AdminConfirmPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\admin\AdminMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ConfirmPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\engineer\EngineerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\engineer\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\engineer\ProductAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\engineer\QRCodePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\manager\ManagerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\PreOrderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="view\worker\AdminConfirmPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,11 +235,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="view\engineer\" />
-    <Folder Include="view\executive\" />
-    <Folder Include="view\manager\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\card.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

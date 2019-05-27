@@ -13,15 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MOT.view.worker
+namespace MOT.view.manager
 {
     /// <summary>
-    /// 工人进入后。
+    /// ManagerMainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class WorkerMainWindow : NavigationWindow
+    public partial class ManagerMainWindow : NavigationWindow
     {
-        
-        public WorkerMainWindow()
+        public ManagerMainWindow()
         {
             InitializeComponent();
         }
