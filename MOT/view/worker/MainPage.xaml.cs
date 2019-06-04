@@ -34,7 +34,8 @@ namespace MOT.view.worker
 
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("pack://application:,,,/view/worker/QRCodePage.xaml"));
+            QRCodePage page = new QRCodePage();
+            this.NavigationService.Navigate(page);
         }
     }
 }

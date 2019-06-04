@@ -64,13 +64,13 @@ namespace MOT.view
                         // 去下单
                         Page page = new PreOrderPage(productItems, Account.Instance.GetUser().employee_id, admin.employee_id);
                         this.NavigationService.Navigate(page);
+                        dtimer.Stop();
                     }
                     else
                     {
                         labelTip.Content = "该卡不属于主管";
                     }
                   
-                    dtimer.Stop();
                 }
             }
             else
@@ -94,7 +94,7 @@ namespace MOT.view
             {
                 //TODO 员工id跟卡号匹配
                 string query = "select *  FROM user WHERE employee_id = @employee_id";
-                User u = connection.Query<User>(query, new { employee_id = 2 }).SingleOrDefault();
+                User u = connection.Query<User>(query, new { employee_id = id }).SingleOrDefault();
                 return u;
             }
         }

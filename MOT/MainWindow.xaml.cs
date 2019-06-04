@@ -136,7 +136,7 @@ namespace MOT
             {
                 //TODO 员工id跟卡号匹配
                 string query = "select *  FROM user WHERE employee_id = @employee_id";
-                User u = connection.Query<User>(query, new { employee_id = 3 }).SingleOrDefault();
+                User u = connection.Query<User>(query, new { employee_id = id }).SingleOrDefault();
                 return u;
             }
         }
