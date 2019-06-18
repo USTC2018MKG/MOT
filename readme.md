@@ -8,3 +8,5 @@
 TODO：打一个开发包时，是否也需要将WDR.dll放到release下。
 
 ### 2. Dapper和mysql.data引入
+
+直接通过NuGet包管理器搜索引入即可。

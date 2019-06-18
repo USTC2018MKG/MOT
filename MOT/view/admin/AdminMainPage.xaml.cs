@@ -28,14 +28,16 @@ namespace MOT.view.admin
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
             // 以旧换新
-            Page page = new QRCodePage(Constant.ADMIN_NEXT_CHANGE);
+            Page page = new QRCodePage();
+            AccountHelper.Account.Instance.GetUser().changeType = Constant.CHANGE_TYPE_DEFAULT;
             this.NavigationService.Navigate(page);
         }
 
         private void BtnGetWithoutOld_Click(object sender, RoutedEventArgs e)
         {
             // 无实物领取
-            Page page = new QRCodePage(Constant.ADMIN_NEXT_WITHOUT_OLD);
+            Page page = new QRCodePage();
+            AccountHelper.Account.Instance.GetUser().changeType = Constant.CHANGE_TYPE_EXCEPTION;
             this.NavigationService.Navigate(page);
         }
 

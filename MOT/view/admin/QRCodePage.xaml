@@ -39,6 +39,8 @@
                 <Label Content="或手动输入" FontSize="30"/>
 
                 <TextBox 
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
                     Name="tbProductNum"
                     Width="200" 
                     Margin="10,0,10,0" 

@@ -25,18 +25,21 @@ namespace MOT.view
     /// </summary>
     public partial class PreOrderPage : Page
     {
+        private int changeType; 
+
         private List<ProductItem> productItems;
 
         private String employeeId;
 
         private String adminId;
 
-        public PreOrderPage(List<domain.ProductItem> productItems, String employeeId, String adminId)
+        public PreOrderPage(List<domain.ProductItem> productItems, String employeeId, String adminId, int changeType)
         {
             InitializeComponent();
             this.productItems = productItems;
             this.employeeId = employeeId;
             this.adminId = adminId;
+            this.changeType = changeType;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -58,11 +61,13 @@ namespace MOT.view
 
                 try
                 {
-                    String uuid = System.Guid.NewGuid().ToString("N");
-                    String now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    String query = "insert into out_order values (@out_id, @out_time, @employee_id, @admin_id, @state);";
-                    // User u = connection.Query<User>(query, new { employee_id = 1 }).SingleOrDefault();
-                    int orderRows = connection.Execute(query, new { out_id = uuid, out_time = now, employee_id = employeeId, admin_id = adminId, state = 0 }, transaction);
+                    DateTime dt = DateTime.Now;
+                    // 时间作为订单id
+                    string uuid = dt.ToString("yyyyMMddhhmmssff");
+                    String now = dt.ToString("yyyy-MM-dd HH:mm:ss");
+                    String query = "insert into out_order values (@out_id, @out_time, @employee_id, @admin_id, @state, @mode, @change_type);";
+                    int orderRows = connection.Execute(query, new { out_id = uuid, out_time = now, employee_id = employeeId, admin_id = adminId,
+                        state = 0, mode = "刷卡", change_type = changeType}, transaction);
 
                     if (orderRows > 0)
                     {
@@ -93,6 +98,7 @@ namespace MOT.view
                 }
                 catch (Exception exception)
                 {
+                    Console.WriteLine(exception.ToString());
                     transaction.Rollback();
                     labelTip.Content = "请求出错，请返回重试。";
                     btnBack.Visibility = Visibility.Visible;

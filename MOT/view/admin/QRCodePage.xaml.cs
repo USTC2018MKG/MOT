@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,18 +35,12 @@ namespace MOT.view.admin
         public QRCodePage()
         {
             InitializeComponent();
-        }
-
-        public QRCodePage(int nextPage)
-        {
-            InitializeComponent();
             if (dtimer == null)
             {
                 dtimer = new System.Windows.Threading.DispatcherTimer();
                 dtimer.Interval = TimeSpan.FromSeconds(1);
                 dtimer.Tick += dtimer_Tick;
             }
-            this.nextPage = nextPage;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -75,7 +70,6 @@ namespace MOT.view.admin
             if (dtimer != null && dtimer.IsEnabled)
             {
                 dtimer.Stop();
-                dtimer = null;
             }
             // Api.controlScan(false);
         }
@@ -102,17 +96,18 @@ namespace MOT.view.admin
             }
             else
             {
-                // TODO 无实物领取、以旧换新
-                if(nextPage == Constant.ADMIN_NEXT_CHANGE)
+                // 两者的产品界面是否不同？还是只是生成订单的change type不同而已。
+                if (Account.Instance.GetUser().changeType == Constant.CHANGE_TYPE_DEFAULT)
                 {
                     Page p = new ProductPage(tbProductNum.Text);
                     this.NavigationService.Navigate(p);
-                }else if(nextPage == Constant.ADMIN_NEXT_WITHOUT_OLD)
+                }
+                else if (Account.Instance.GetUser().changeType == Constant.CHANGE_TYPE_EXCEPTION)
                 {
                     // 领取权限
                     Page p = new ProductPage(tbProductNum.Text);
                     this.NavigationService.Navigate(p);
-                }  
+                }
             }
         }
 

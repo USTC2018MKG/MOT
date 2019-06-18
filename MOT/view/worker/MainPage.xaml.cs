@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,13 @@ namespace MOT.view.worker
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
             QRCodePage page = new QRCodePage();
+            Account.Instance.GetUser().changeType = Constant.CHANGE_TYPE_DEFAULT;
             this.NavigationService.Navigate(page);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            labelWelcome.Content = Account.Instance.GetUser().user_name + ", 欢迎您！";
         }
     }
 }

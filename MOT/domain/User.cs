@@ -17,7 +17,10 @@ namespace MOT.domain
         public int type { get; set; }
         private int num_auth { get; set; }
 
-        // 管理员用户的无实物领取权限
+        // 用户产生领取订单时的的更换类型
+        public int changeType { get; set; }
+
+        // 管理员用户的无实物领取权限，普通用户数据库中字段为null
         public int NumAuth()
         {
             if(type == Constant.USER_TYPE_ADMIN){

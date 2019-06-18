@@ -6,16 +6,21 @@
       xmlns:local="clr-namespace:MOT.view.engineer"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
+      Title="MainPage" Loaded="Page_Loaded">
 
-    <Grid>
-        <StackPanel 
-            Orientation="Vertical" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center"  >
+ 
+        <StackPanel >
+
+            <Label
+            Name="labelWelcome"
+            HorizontalAlignment="Left"  
+            Margin="20,20,0,0"
+            Content="欢迎您！" 
+            FontSize="30" />
+            
             <Button 
+                Margin="0,40,0,0"
                 Name="btnProductAdd"
-                Margin="10"
                 Content="工艺新增"
                 Height="60"
                 Width="300"
@@ -24,7 +29,9 @@
                 FontSize="28"  
                 Foreground="White" Background="#FF053364" Click="BtnProductAdd_Click"/>
 
+            <!--暂时不需要工艺变更-->
             <Button
+                Visibility="Hidden"
                 Name="btnProductChange"
                 Margin="10"
                 Content="工艺变更"
@@ -46,6 +53,5 @@
                 FontSize="28"  
                 Foreground="White" Background="#FF053364" Click="BtnQuit_Click" />
         </StackPanel>
-        
-    </Grid>
+
 </Page>

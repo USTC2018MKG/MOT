@@ -25,6 +25,7 @@ namespace MOT.view
 {
     /// <summary>
     /// AdminConfirmPage.xaml 的交互逻辑
+    /// 普通员工、工程师领取需要主管同意
     /// </summary>
     /// 
 
@@ -59,16 +60,17 @@ namespace MOT.view
                 {
                    // CardDevice.Instance.Beep();
                     User admin = CheckAdmin(cardNo);
-                    if(admin.type == 2 || admin.type == 3)
+                    if(admin.type == Constant.USER_TYPE_ADMIN || admin.type == Constant.USER_TYPE_MANAGER)
                     {
                         // 去下单
-                        Page page = new PreOrderPage(productItems, Account.Instance.GetUser().employee_id, admin.employee_id);
+                        User loginUser = Account.Instance.GetUser();
+                        Page page = new PreOrderPage(productItems, Account.Instance.GetUser().employee_id, admin.employee_id, loginUser.changeType);
                         this.NavigationService.Navigate(page);
                         dtimer.Stop();
                     }
                     else
                     {
-                        labelTip.Content = "该卡不属于主管";
+                        labelTip.Content = "该卡不属于主管!";
                     }
                   
                 }
@@ -112,7 +114,6 @@ namespace MOT.view
             if (dtimer != null && dtimer.IsEnabled)
             {
                 dtimer.Stop();
-                dtimer = null;
             }
         }
     }

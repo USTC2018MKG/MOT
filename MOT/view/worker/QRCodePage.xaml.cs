@@ -67,7 +67,6 @@ namespace MOT.view.worker
             if (dtimer != null && dtimer.IsEnabled)
             {
                 dtimer.Stop();
-                dtimer = null;
             }
            // Api.controlScan(false);
         }

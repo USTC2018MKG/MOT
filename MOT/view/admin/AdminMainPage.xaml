@@ -27,7 +27,7 @@
             <Button
                 Name="btnGetWithoutOld"
                 Margin="10"
-                Content="无实物领取"
+                Content="异常领取"
                 Height="60"
                 Width="300"
                 HorizontalAlignment="Center" 

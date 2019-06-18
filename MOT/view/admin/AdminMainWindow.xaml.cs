@@ -17,6 +17,7 @@ namespace MOT.view.admin
 {
     /// <summary>
     /// AdminMainWindow.xaml 的交互逻辑
+    /// 管理员操作的承载页面
     /// </summary>
     public partial class AdminMainWindow : NavigationWindow
     {

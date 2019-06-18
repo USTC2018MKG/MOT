@@ -20,7 +20,7 @@
             <Grid Grid.Column="2" x:Name="column3"/>
         </Grid>
 
-        <Label DockPanel.Dock="Top" Content="产品A" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top" FontSize="28"/>
+        <Label DockPanel.Dock="Top" Content="产品所需刀具列表" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top" FontSize="28"/>
 
         <Grid 
             DockPanel.Dock="Bottom">
@@ -123,7 +123,6 @@
                                         FontSize="18" 
                                         Width="40" 
                                         Padding="5,5,5,5"
-                                        IsEnabled="{Binding Available}"
                                         HorizontalAlignment="Right" 
                                         VerticalAlignment="Center" 
                                         BorderThickness="0" 
@@ -149,6 +148,7 @@
                                         Foreground="White"
                                         FontSize="18" 
                                         Width="40"
+                                        IsEnabled="{Binding Available}"
                                         HorizontalAlignment="Right" 
                                         VerticalAlignment="Center" 
                                         BorderThickness="0" 

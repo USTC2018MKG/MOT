@@ -75,7 +75,6 @@ namespace MOT.view.engineer
             if (dtimer != null && dtimer.IsEnabled)
             {
                 dtimer.Stop();
-                dtimer = null;
             }
             // Api.controlScan(false);
         }
@@ -108,7 +107,7 @@ namespace MOT.view.engineer
                     this.NavigationService.Navigate(p);
                 }else if(nextPage == Constant.ENGINEER_NEXT_CHANGE)
                 {
-                    // TODO
+                    // TODO 工艺变更
                 }  
             }
         }
@@ -129,6 +128,9 @@ namespace MOT.view.engineer
             }
         }
 
+        /// <summary>
+        /// 返回二维码扫描结果
+        /// </summary>
         public string Decoder()
         {
             byte[] result;

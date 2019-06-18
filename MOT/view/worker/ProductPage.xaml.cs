@@ -125,8 +125,7 @@ namespace MOT.view.worker
             if (result == MessageBoxResult.OK)
             {
                 lvMaterials.SelectedItem = ((Button)sender).DataContext;
-                ProductItem item = lvMaterials.SelectedItem as ProductItem;
-                
+                ProductItem item = lvMaterials.SelectedItem as ProductItem;              
                 productItems.Remove(item);
             }
         }

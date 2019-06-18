@@ -19,6 +19,7 @@ namespace MOT.view
 {
     /// <summary>
     /// ConfirmPage.xaml 的交互逻辑
+    /// 选定刀具数量后，再一次确认
     /// </summary>
     public partial class ConfirmPage : Page
     {
@@ -36,8 +37,6 @@ namespace MOT.view
             this.productItems = productItems;
         }
 
-
-
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             // 确认下单,员工主管刷卡后，生成订单
@@ -45,7 +44,8 @@ namespace MOT.view
             User user = Account.Instance.GetUser();
             if (user.type == Constant.USER_TYPE_ADMIN)
             {
-                Page page = new PreOrderPage(productItems, user.employee_id, user.employee_id);
+                User loginUser = Account.Instance.GetUser();
+                Page page = new PreOrderPage(productItems, user.employee_id, user.employee_id,loginUser.changeType);
                 this.NavigationService.Navigate(page);
             }
             else

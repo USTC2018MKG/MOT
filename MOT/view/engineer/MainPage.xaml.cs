@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace MOT.view.engineer
         {
             // 扫描产品二维码
             Page page = new QRCodePage(Constant.ENGINEER_NEXT_ADD);
+            Account.Instance.GetUser().changeType = Constant.CHANGE_TYPE_ADD;
             this.NavigationService.Navigate(page);
         }
 
@@ -44,6 +46,11 @@ namespace MOT.view.engineer
             // 控制宿主Windows的关闭
             Window workerMain = Window.GetWindow(this);
             workerMain.Close();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            labelWelcome.Content = Account.Instance.GetUser().user_name + ", 欢迎您！";
         }
     }
 }
