@@ -63,10 +63,10 @@ namespace MOT.view
                 {
                     DateTime dt = DateTime.Now;
                     // 时间作为订单id
-                    string uuid = dt.ToString("yyyyMMddhhmmssff");
+                    string outId = GetOutId(dt);
                     String now = dt.ToString("yyyy-MM-dd HH:mm:ss");
                     String query = "insert into out_order values (@out_id, @out_time, @employee_id, @admin_id, @state, @mode, @change_type);";
-                    int orderRows = connection.Execute(query, new { out_id = uuid, out_time = now, employee_id = employeeId, admin_id = adminId,
+                    int orderRows = connection.Execute(query, new { out_id = outId, out_time = now, employee_id = employeeId, admin_id = adminId,
                         state = 0, mode = "刷卡", change_type = changeType}, transaction);
 
                     if (orderRows > 0)
@@ -75,7 +75,7 @@ namespace MOT.view
                         String insert = "insert into out_item(out_id, mid, num) values (@out_id, @mid, @num);";
                         foreach (ProductItem item in productItems)
                         {
-                            int knifeRows = connection.Execute(insert, new { out_id = uuid, item.mid, num = item.Num }, transaction);
+                            int knifeRows = connection.Execute(insert, new { out_id = outId, item.mid, num = item.Num }, transaction);
                             if (knifeRows > 0)
                             {
                                 String knifeSql = "update material set rest = @rest where mid = @mid; ";
@@ -105,6 +105,27 @@ namespace MOT.view
                 }
 
             }
+        }
+
+        // 构造订单ID
+        private string GetOutId(DateTime date)
+        {
+            String type;
+            switch (changeType)
+            {
+                case Constant.CHANGE_TYPE_ADD: // 工艺新增
+                    type = "GYXZ";
+                    break;
+                case Constant.CHANGE_TYPE_EXCEPTION: // 异常领取
+                    type = "YCLQ";
+                    break;
+                default:                        // 以旧换新
+                    type = "YJHX";
+                    break;
+            }
+            string time = date.ToString("yyyyMMddhhmmss");
+
+            return type + "_" + time;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
